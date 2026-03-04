@@ -59,7 +59,7 @@ const Description = () => {
                     bgcolor: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
-                    color: activeTab === tab ? 'primary.main' : '#8B96A5',
+                    color: activeTab === tab ? 'primary.main' : '#8B96A5' && 'text.fourth',
                     borderBottom: activeTab === tab ? '2px solid' : 'none',
                     borderColor: 'primary.main',
                     '&:hover': { color: 'primary.main' },
@@ -74,7 +74,7 @@ const Description = () => {
 
           {/* CONTENT BODY */}
           <Box sx={{ p: 3 }}>
-            <Typography variant="body1" sx={{ color: '#505050', mb: 3, lineHeight: 1.6, textAlign: 'left' }}>
+            <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, lineHeight: 1.6, textAlign: 'left' }}>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br /> 
 Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
             </Typography>
@@ -110,7 +110,7 @@ Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa
                       </TableCell>
                       <TableCell
                         sx={{
-                          color: '#505050',
+                          color: 'text.secondary',
                           py: 1.5,
                           borderBottom: index !== specs.length - 1 ? '1px solid #E0E7EE' : 'none',
                         }}
@@ -128,7 +128,7 @@ Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa
               {['Some great feature name here', 'Lorem ipsum dolor sit amet, consectetur', 'Duis aute irure dolor in reprehenderit', 'Some great feature name here'].map((text, i) => (
                 <Stack key={i} direction="row" spacing={1} alignItems="center">
                   <CheckIcon sx={{ fontSize: 18, color: '#8B96A5' }} />
-                  <Typography variant="body2" sx={{ color: '#505050' }}>{text}</Typography>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>{text}</Typography>
                 </Stack>
               ))}
             </Stack>
