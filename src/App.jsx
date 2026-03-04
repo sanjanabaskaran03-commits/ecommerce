@@ -11,7 +11,9 @@ import Footer from './components/layout/Footer';
 
 import Home from './homePage/Home.jsx';
 import List from './listviewpage/List.jsx';
-import Details from './detailpage/Details.jsx'
+import Details from './detailpage/Details.jsx';
+import Cart from './cartpage/Cart.jsx';
+import { CartProvider } from "./context/CartContext"; // Correctly imported
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -27,28 +29,30 @@ function App() {
   const theme = useMemo(() => createTheme(getThemeOptions(mode)), [mode]);
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline /> 
-        <Router>
-          <BrandHeader />
-          <Navbar />
-          
-          <main style={{ minHeight: '80vh' }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
+// App.js
+<ColorModeContext.Provider value={colorMode}>
+  <ThemeProvider theme={theme}>
+    <CartProvider> {/* This must wrap the Router and Header */}
+      <CssBaseline />
+      <Router>
+        <BrandHeader />
+        <Navbar />
             
-              <Route path="/shop" element={<List />} />
-              <Route path='/detail' element={<Details />}/>
-            </Routes>
+            <main style={{ minHeight: '80vh' }}>
+              <Routes>
+                {/* 2. Simplified and cleaned up routes */}
+                <Route path="/" element={<Home />} />
+                <Route path="/shop" element={<List />} />
+                <Route path='/detail' element={<Details />}/>
+                <Route path='/cart' element={<Cart />} />
+              </Routes>
+            </main>
             
-            
-          </main>
-          <Footer />
-        </Router>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
-  );
+            <Footer />
+      </Router>
+    </CartProvider>
+  </ThemeProvider>
+</ColorModeContext.Provider>
+  )
 }
-
-export default App;
+export default App

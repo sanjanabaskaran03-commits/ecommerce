@@ -24,6 +24,7 @@ const Discount = () => {
         direction="row" 
         justifyContent="space-between" 
         alignItems="center" 
+        
         sx={{ p: { xs: 2, md: 3 }, minHeight: '100px' }}
       >
         {/* TEXT SECTION */}

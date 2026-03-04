@@ -35,6 +35,7 @@ const FilterSidebar = ({ activeFilters, onFilterToggle }) => {
 
   return (
     <Box sx={{ width: '100%', textAlign: 'left' }}>
+      <Divider sx={{ my: 0.5, borderColor: 'divider' }} />
       <FilterSection title="Category">
         <Stack spacing={2}>
           {['Mobile accessory', 'Electronics', 'Smartphones', 'Modern tech'].map(item => (

@@ -16,7 +16,7 @@ const RelatedProducts = () => {
     { id: 3, title: 'Headphone', price: '$32.00-$40.00', img: '/images/homepage/recommended_items/headphone.png' },
     { id: 4, title: 'Poco X5 Pro 5G', price: '$32.00-$40.00', img: '/images/homepage/categories/tab.png' },
     { id: 5, title: 'Canon Camera', price: '$32.00-$40.00', img: '/images/homepage/deals/camera.png' },
-    { id: 6, title: "Huawei Watch GT 3'", price: '$32.00-$40.00', img: '/images/homepage/deals/phone.png' }
+    { id: 6, title: "Huawei Watch ", price: '$32.00-$40.00', img: '/images/homepage/deals/phone.png' }
   ];
 
   return (
@@ -48,7 +48,8 @@ const RelatedProducts = () => {
             flexDirection='column' 
             spacing={2} 
             alignItems="center"
-            sx={{  flex: '1 1 auto' }}
+            justifyContent="flex-start"
+            sx={{  flex: '1 1 auto'}}
           >
             <Box
               component="img"

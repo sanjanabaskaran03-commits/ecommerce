@@ -28,8 +28,8 @@ const ProductListHeader = () => {
           <MenuItem value="Newest">Newest items</MenuItem>
         </Select>
         <Stack direction="row" sx={{ border: '1px solid #E3E8EE',borderColor: 'divider',  borderRadius: '4px', overflow: 'hidden' }}>
-          <IconButton size="small" sx={{ borderRadius: 0, borderColor: 'divider', borderRight: 'divider' }}><GridViewIcon fontSize="small" /></IconButton>
-          <IconButton size="small" sx={{ borderRadius: 0, borderRight: 'divider' }}><ViewListIcon fontSize="small" /></IconButton>
+          <IconButton size="small" sx={{ borderRadius: 0, borderColor: 'divider', borderRight: 'divider','&:focus':{outline:'none'} }}><GridViewIcon fontSize="small" /></IconButton>
+          <IconButton size="small" sx={{ borderRadius: 0, borderRight: 'divider','&:focus':{outline:'none'} }}><ViewListIcon fontSize="small" /></IconButton>
         </Stack>
       </Stack>
     </Box>

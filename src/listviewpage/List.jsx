@@ -27,7 +27,7 @@ const List = () => {
 
   return (
     <>
-    <Box sx={{ bgcolor: '#F7FAFC', minHeight: '100vh', py: 2 }}>
+    <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 2 }}>
       <Container maxWidth="xl">
         <BreadcrumbSection />
 
