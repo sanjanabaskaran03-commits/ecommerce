@@ -4,8 +4,8 @@ import CategoryCard from './CategoryCard';
 
 const CategorySection = ({ title, bannerImg, items }) => {
   return (
-    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 ,mt:3}}>
-      <Paper variant="outlined" sx={{ width: '87%', display: 'flex', borderRadius: '8px', overflow: 'hidden' }}>
+    <Box sx={{ width: '100%', mb: 3 ,mt:3}}>
+  <Paper variant="outlined" sx={{ width: '100%', display: 'flex', borderRadius: '8px', overflow: 'hidden' }}>
         
         <Box sx={{
           width: '280px',

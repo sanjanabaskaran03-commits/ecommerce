@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Box, Card, Typography, Stack, Button, IconButton, Rating } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite'; 
@@ -11,6 +12,7 @@ const MotionCard = motion.create(Card);
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [animate, setAnimate] = useState(false);
   const theme = useTheme();
@@ -29,7 +31,7 @@ const ProductCard = ({ product }) => {
     e.stopPropagation();
     addToCart(product); // Increases count in header, stays on page
   };
-
+  
   return (
     <MotionCard
       variant="outlined"

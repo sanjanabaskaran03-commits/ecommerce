@@ -37,22 +37,29 @@ const Footer = () => {
   };
 
   return (
-    <Box component="footer" sx={{ bgcolor: 'background.paper', pt: 6, width: '100%' }}>
+    <Box component="footer" sx={{ bgcolor: 'background.paper', pt: { xs: 4, md: 6 }, width: '100%' }}>
       
       {/* MAIN CONTENT AREA */}
       <Container 
-        disableGutters 
+        maxWidth={false} // Ensures content doesn't stretch too wide on huge monitors
         sx={{ 
-          px: 2, // Matches Header Toolbar px: 2
+          maxWidth: "1280px",
+    margin: "0 auto",
+    px: 2, 
           pb: 6,
           display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          textAlign:"left",
-          gap: 4
+          // Mobile: Stack | Tablet: Wrap | Desktop: Row
+          flexDirection: { xs: 'column', sm: 'row' },
+          flexWrap: 'wrap',
+          textAlign: "left",
+          gap: { xs: 4, md: 2, lg: 4 }
         }}
       >
         {/* BRAND SECTION */}
-        <Box sx={{ flex: { xs: '1 1 auto', md: '0 0 280px' },textAlign:"left" }}>
+        <Box sx={{ 
+          flex: { xs: '1 1 100%', sm: '1 1 30%', md: '0 0 250px' },
+          textAlign: "left" 
+        }}>
           <Stack spacing={2}>
             <Stack direction="row" alignItems="center" spacing={1.5}>
               <Box sx={{ bgcolor: '#0D6EFD', borderRadius: '8px', p: 0.8, display: 'flex' }}>
@@ -62,7 +69,7 @@ const Footer = () => {
                 Brand
               </Typography>
             </Stack>
-            <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6, maxWidth: '240px' ,textAlign:"left"}}>
+            <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6, maxWidth: '280px' }}>
               Best information about the company goes here but now lorem ipsum is
             </Typography>
             <Stack direction="row" spacing={1}>
@@ -79,14 +86,14 @@ const Footer = () => {
         <Box 
           sx={{ 
             flex: 1, 
-            display: 'flex', 
-            flexWrap: 'wrap', 
-            gap: 2,
-            justifyContent: 'space-between' 
+            display: 'grid', 
+            // 2 columns on mobile, 4 columns on desktop
+            gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+            gap: 3,
           }}
         >
           {footerLinks.map((section) => (
-            <Box key={section.title} sx={{ minWidth: { xs: '140px', sm: '120px' } }}>
+            <Box key={section.title}>
               <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 2, fontSize: '16px', color: isDark ? 'text.primary' : '#1c1c1c' }}>
                 {section.title}
               </Typography>
@@ -102,9 +109,12 @@ const Footer = () => {
         </Box>
 
         {/* APP SECTION */}
-        <Box sx={{ flex: { xs: '1 1 auto', md: '0 0 120px' },textAlign:"left" }}>
-          <Stack spacing={1.5}>
-            <Typography variant="subtitle1" sx={{ fontWeight: 600, fontSize: '16px', color: isDark ? 'text.primary' : '#1c1c1c' }}>
+        <Box sx={{ 
+          flex: { xs: '1 1 100%', sm: '1 1 100%', md: '0 0 124px' },
+          mt: { xs: 2, md: 0 }
+        }}>
+          <Stack spacing={1.5} direction={{ xs: 'row', md: 'column' }} flexWrap="wrap">
+            <Typography variant="subtitle1" sx={{ fontWeight: 600, fontSize: '16px', color: isDark ? 'text.primary' : '#1c1c1c', width: '100%' }}>
               Get app
             </Typography>
             <Box sx={appButtonStyle}>
@@ -128,12 +138,16 @@ const Footer = () => {
       {/* COPYRIGHT BOTTOM BAR */}
       <Box sx={{ bgcolor: isDark ? 'rgba(255,255,255,0.05)' : '#EFF2F4', py: 2.5, width: '100%' }}>
         <Container 
-          disableGutters 
+          maxWidth="false"
           sx={{ 
-            px: 2, 
+            maxWidth: "1280px",
+    margin: "0 auto",
+    px: 2,
             display: 'flex', 
+            flexDirection: { xs: 'column', sm: 'row' },
             justifyContent: 'space-between', 
-            alignItems: 'center' 
+            alignItems: 'center',
+            gap: { xs: 2, sm: 0 }
           }}
         >
           <Typography variant="body2" sx={{ color: '#606060' }}>

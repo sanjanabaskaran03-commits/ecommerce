@@ -4,11 +4,13 @@ import LockIcon from '@mui/icons-material/Lock';
 import MessageIcon from '@mui/icons-material/Message';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import HighQualityIcon from '@mui/icons-material/HighQuality';
+import LayoutContainer from '../../components/common/LayoutContainer';
+
 
 const Label = () => {
   return (
-    <Container maxWidth="1440px" sx={{ py: 3 ,width:"1200px"}}>
-    <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
+    <LayoutContainer>
+    <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2} mt={3}>
         <Stack direction="row" alignItems="center" spacing={1}>
             <Stack width="40px" height="40px" borderRadius="50%" bgcolor="#DEE2E7"  directtion="row" alignItems="center" justifyContent="center">
             <LockIcon sx={{color:"#979797"}} />
@@ -48,7 +50,7 @@ const Label = () => {
             </Stack>
         </Stack>
     </Stack>
-    </Container>
+    </LayoutContainer>
   )
 }
 export default Label;

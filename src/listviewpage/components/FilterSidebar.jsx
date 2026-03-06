@@ -5,6 +5,7 @@ import {
   Button, Slider, Rating, Radio, RadioGroup 
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import LayoutContainer from '../../components/common/LayoutContainer';
 
 const FilterSection = ({ title, children }) => (
   <Accordion 

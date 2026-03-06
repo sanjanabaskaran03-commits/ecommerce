@@ -3,16 +3,18 @@ import {
   Box, Typography, Stack, Link, TableCell, TableBody, TableRow, TableContainer, Table
 } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import LayoutContainer from '../../components/common/LayoutContainer';
+
 
 const Description = () => {
   const [activeTab, setActiveTab] = useState('Description');
 
   const relatedProducts = [
-    { id: 1, name: 'Apple iPhone 14 Pro', price: '$7.00 - $99.50', img: 'images/listviewpage/mobile.png' },
-    { id: 2, name: 'Samsung Galaxy S23 Ultra', price: '$7.00 - $99.50', img: 'images/listviewpage/mobile2.png' },
-    { id: 3, name: 'Poco X5 Pro 5G', price: '$7.00 - $99.50', img: 'images/listviewpage/tab.png' },
-    { id: 4, name: 'Canon Camera EOS 2000', price: '$7.00 - $99.50', img: 'images/listviewpage/laptop.png' },
-    { id: 5, name: "Huawei Watch GT 3", price: '$7.00 - $99.50', img: 'images/listviewpage/watch.png' },
+    { id: 1, name: 'Apple iPhone 14 Pro', price: '$7.00 - $99.50', img: '/images/listviewpage/mobile.png' },
+    { id: 2, name: 'Samsung Galaxy S23 Ultra', price: '$7.00 - $99.50', img: '/images/listviewpage/mobile2.png' },
+    { id: 3, name: 'Poco X5 Pro 5G', price: '$7.00 - $99.50', img: '/images/listviewpage/tab.png' },
+    { id: 4, name: 'Canon Camera EOS 2000', price: '$7.00 - $99.50', img: '/images/listviewpage/laptop.png' },
+    { id: 5, name: "Huawei Watch GT 3", price: '$7.00 - $99.50', img: '/images/listviewpage/watch.png' },
   ];
 
   const specs = [
@@ -24,15 +26,16 @@ const Description = () => {
   ];
 
   return (
-    <Box maxWidth="1440px" sx={{width:"1100px"}}>
+    <LayoutContainer>
     <Stack
       direction={{ xs: 'column', md: 'row' }}
       spacing={2}
-      
-      
-      sx={{ mt: 3, width: '1100px',display:"flex",justifyContent:"space-between" }}
+      justifyContent="space-between"
+       alignItems="flex-start"
+      sx={{ mt: 3,display:"flex" }}
     >
       {/* LEFT: MAIN CONTENT AREA */}
+      <Stack>
       <Box sx={{ flex: 3, minWidth: 0 }}>
         <Box
           sx={{
@@ -135,8 +138,10 @@ Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa
           </Box>
         </Box>
       </Box>
+      </Stack>
 
       {/* RIGHT: SIDEBAR SECTION */}
+      <Stack>
       <Box sx={{
         flex: 1,
         minWidth: 280,
@@ -145,7 +150,7 @@ Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa
         border: '1px solid',
         borderColor: 'divider',
         p: 2,
-        height: 'fit-content'
+        height: 'auto'
       }}>
         <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 2, textAlign: "left" }}>You may like</Typography>
         <Stack spacing={2.5}>
@@ -172,7 +177,9 @@ Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa
         </Stack>
       </Box>
     </Stack>
-    </Box>
+    </Stack>
+    </LayoutContainer>
+    
   );
 };
 

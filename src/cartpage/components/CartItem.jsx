@@ -3,6 +3,8 @@ import { Box, Typography, Button, Divider, MenuItem, Select, Stack, Container, O
 import { useCart } from '../../context/CartContext'; 
 import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import LayoutContainer from '../../components/common/LayoutContainer';
+
 
 const CartItem = () => {
   const { cartItems, removeFromCart, clearCart, updateQuantity } = useCart(); 
@@ -15,7 +17,7 @@ const CartItem = () => {
   const total = Math.max(0, subtotal - discount + tax);
 
   return (
-    <Container maxWidth="1440px" sx={{ py: 3 ,width:"1200px"}}>
+    <LayoutContainer>
       <Typography variant="h5" sx={{ mb: 2, fontWeight: 700, textAlign: "left" }}>My cart ({cartItems.length})</Typography>
       
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
@@ -122,7 +124,7 @@ const CartItem = () => {
           </Stack>
         </Box>
       </Box>
-    </Container>
+    </LayoutContainer>
   );
 };
 

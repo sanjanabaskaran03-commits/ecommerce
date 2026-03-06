@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Stack, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
+import LayoutContainer from '../../components/common/LayoutContainer';
 
 const MotionBox = motion(Box);
 
@@ -37,17 +38,17 @@ const Deals = () => {
   ];
 
   return (
-    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 4 }}>
+    <LayoutContainer>
       <Paper
-        variant="outlined"
+         variant="outlined"
         sx={{
-          width: '85%',
+          p: 2,
+          mt: 4,
+          borderRadius: "8px",
+          borderColor: "#DEE2E7",
+          bgcolor: "background.paper",
           display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          borderRadius: '8px',
-          overflow: 'hidden',
-          borderColor: 'divider', 
-          bgcolor: 'background.paper',
+          justifyContent: 'center',
         }}
       >
         {/* TIMER SECTION */}
@@ -139,7 +140,7 @@ const Deals = () => {
           ))}
         </Box>
       </Paper>
-    </Box>
+    </LayoutContainer>
   );
 };
 

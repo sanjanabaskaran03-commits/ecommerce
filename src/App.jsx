@@ -13,7 +13,8 @@ import Home from './homePage/Home.jsx';
 import List from './listviewpage/List.jsx';
 import Details from './detailpage/Details.jsx';
 import Cart from './cartpage/Cart.jsx';
-import { CartProvider } from "./context/CartContext"; // Correctly imported
+import { CartProvider } from "./context/CartContext"; 
+import HeroSection from './detailpage/components/HeroSection.jsx';// Correctly imported
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -40,11 +41,11 @@ function App() {
             
             <main style={{ minHeight: '80vh' }}>
               <Routes>
-                {/* 2. Simplified and cleaned up routes */}
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<List />} />
-                <Route path='/detail' element={<Details />}/>
+                <Route path='/detail/:id' element={<Details />}/>
                 <Route path='/cart' element={<Cart />} />
+                <Route path="/detail/:id" element={<HeroSection />} />
               </Routes>
             </main>
             

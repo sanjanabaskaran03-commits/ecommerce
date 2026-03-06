@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import {
   Box, Typography, Stack, Rating, Divider,
   Button, useTheme
@@ -14,21 +15,24 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; // For the "Go to cart" state
 import { useCart } from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import LayoutContainer from '../../components/common/LayoutContainer';
+
 
 const HeroSection = ({ product }) => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
   const navigate = useNavigate(); // Initialize navigate
   const { addToCart, cartItems } = useCart();
+  const { id } = useParams();
 
   const productsArray = [
-    { id: 1, title: 'Apple iPhone 14 Pro', price: '998.00', rating: 5, reviews: 32, orders: 154, description: 'Plastic cover, Super power', img: 'images/listviewpage/mobile.png' },
-    { id: 2, title: 'Samsung Galaxy S23 Ultra', price: '998.00', rating: 4, reviews: 20, orders: 154, description: 'Metallic body, 8GB Ram, Large Memory ', img: 'images/listviewpage/mobile2.png' },
-    { id: 3, title: 'Poco X5 Pro 5G', price: '998.00', rating: 3, reviews: 15, orders: 154, description: 'Metallic finish, 8GB Ram', img: 'images/listviewpage/tab.png' },
-    { id: 4, title: 'Canon Camera EOS 2000', price: '998.00', rating: 2, reviews: 10, orders: 154, description: 'Electronics, Modern tech', img: 'images/listviewpage/laptop.png' }
+    { id: 1, title: 'Apple iPhone 14 Pro', price: '998.00', rating: 5, reviews: 32, orders: 154, description: 'Plastic cover, Super power', img: '/images/listviewpage/mobile.png' },
+    { id: 2, title: 'Samsung Galaxy S23 Ultra', price: '998.00', rating: 4, reviews: 20, orders: 154, description: 'Metallic body, 8GB Ram, Large Memory ', img: '/images/listviewpage/mobile2.png' },
+    { id: 3, title: 'Poco X5 Pro 5G', price: '998.00', rating: 3, reviews: 15, orders: 154, description: 'Metallic finish, 8GB Ram', img: '/images/listviewpage/tab.png' },
+    { id: 4, title: 'Canon Camera EOS 2000', price: '998.00', rating: 2, reviews: 10, orders: 154, description: 'Electronics, Modern tech', img: '/images/listviewpage/laptop.png' }
   ];
 
-  const activeProduct = product || productsArray[0];
+  const activeProduct = product || productsArray.find((item)=>item.id===Number(id)) || productsArray[0]; // Fallback to first product if not found or no prop passed
 
   const [mainImg, setMainImg] = useState(activeProduct.img);
   const [isSaved, setIsSaved] = useState(false);
@@ -53,8 +57,12 @@ const HeroSection = ({ product }) => {
       setIsAdded(true);
     }
   };
+  const handleNavigate = () => {
+    navigate(`/detail/${product.id}`); // Navigate to details page with product ID
+  }
 
   return (
+      <LayoutContainer>
     <Box
       sx={{
         p: 3, borderRadius: '6px', bgcolor: 'background.paper', border: '1px solid',
@@ -90,7 +98,7 @@ const HeroSection = ({ product }) => {
               key={item.id}
               component="img"
               src={item.img}
-              onClick={() => setMainImg(item.img)}
+              onClick={() => navigate(`/detail/${item.id}`)}
               sx={{
                 width: 70, height: 70, p: 0.5, cursor: 'pointer',
                 border: '1px solid', borderRadius: '4px',
@@ -198,6 +206,10 @@ const HeroSection = ({ product }) => {
               <VerifiedUserIcon fontSize="small" color="disabled" />
               <Typography variant="body2" color="text.secondary">Verified Seller</Typography>
             </Stack>
+            <Stack direction="row" spacing={1.5} alignItems="center">
+              <LanguageIcon fontSize="small" color="disabled" />
+              <Typography variant="body2" color="text.secondary">Worldwide shipping</Typography>
+            </Stack>
           </Stack>
           <Stack spacing={1} sx={{ mt: 3 }}>
             <Button variant="contained" fullWidth sx={{ textTransform: 'none', boxShadow: 'none' }}>Send inquiry</Button>
@@ -209,7 +221,7 @@ const HeroSection = ({ product }) => {
           fullWidth
           startIcon={isSaved ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           onClick={() => setIsSaved(!isSaved)}
-          sx={{ mt: 2, textTransform: 'none', color: 'primary.main', fontWeight: 600, '&:focus': { outline: 'none' } }}
+          sx={{ mt: 2, textTransform: 'none', color: 'primary.main', fontWeight: 600, '&:focus': { outline: 'none' } ,border: isAdded ? "1px solid" : "none", borderColor: 'primary.main',}}
         >
           {isSaved ? "Saved" : "Save for later"}
         </Button>
@@ -222,6 +234,8 @@ const HeroSection = ({ product }) => {
           sx={{
             mt: 1,
             textTransform: 'none',
+            border: isAdded ? "1px solid" : "none", // Added border for "Go to Cart" to make it look like a button
+            borderColor: 'primary.main',
             color: 'primary.main',
             fontWeight: 600,
             '&:focus': { outline: 'none' },
@@ -234,6 +248,7 @@ const HeroSection = ({ product }) => {
         </Button>
       </Box>
     </Box>
+    </LayoutContainer>
   );
 };
 

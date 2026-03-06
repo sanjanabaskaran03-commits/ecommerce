@@ -3,6 +3,7 @@ import {
   Box, Typography, Button, Paper, TextField, 
   Stack, MenuItem, Select, useTheme 
 } from '@mui/material';
+import LayoutContainer from "../../components/common/LayoutContainer";
 
 const SendingRequests = () => {
   const theme = useTheme();
@@ -22,14 +23,12 @@ const SendingRequests = () => {
   };
 
   return (
-    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt:0 }}>
+    <LayoutContainer>
       <Box
         sx={{
-          width: '85%',
           borderRadius: '8px',
           overflow: 'hidden',
           position: 'relative',
-          // Adjusted gradient for dark mode to maintain readability
           backgroundImage: isDark 
             ? `linear-gradient(90deg, #494b4e 0%, rgba(22, 28, 36, 0.8) 100%), url('/images/homepage/sendingrequest/sendingrequest_bg.png')`
             : `linear-gradient(90deg, #2C7CF1 0%, rgba(0, 209, 255, 0.5) 100%), url('/images/homepage/sendingrequest/sendingrequest_bg.png')`,
@@ -43,6 +42,7 @@ const SendingRequests = () => {
           minHeight: '420px'
         }}
       >
+
         {/* Left Side: Text Content */}
         <Box sx={{ color: '#fff', maxWidth: '440px', textAlign: 'left', mt: { md: 2 } }}>
           <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, lineHeight: 1.2 }}>
@@ -110,7 +110,7 @@ const SendingRequests = () => {
               sx={{ 
                 flex: 1, 
                 color: isDark ? '#fff' : "#1C1C1C",
-                "& .MuiSelect-select": { color: isDark ? '#fff' : "#1C1C1C" } ,
+                "& .MuiSelect-select": { color: isDark ? '#fff' : "#1C1C1C" },
                 textAlign: "left"
               }}
             >
@@ -137,8 +137,9 @@ const SendingRequests = () => {
             Send inquiry
           </Button>
         </Paper>
+
       </Box>
-    </Box>
+    </LayoutContainer>
   );
 };
 

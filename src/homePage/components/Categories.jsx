@@ -1,5 +1,7 @@
 import { Box,Container } from '@mui/material';
 import CategorySection from "../../components/common/CategorySection";
+import LayoutContainer from "../../components/common/LayoutContainer";
+
 
 const Categories = () => {
   const homeItems = [
@@ -26,18 +28,21 @@ const Categories = () => {
 
 
   return (
-    <Box sx={{ p: 2}}>
-      <CategorySection 
+    <LayoutContainer>
+      <Box sx={{ py: 2 }}>
+        <CategorySection 
           title="Home and outdoor" 
           bannerImg="/images/homepage/categories/homedecor.png" 
           items={homeItems} 
         />
-      <CategorySection 
+
+        <CategorySection 
           title="Consumer electronics and gadgets" 
           bannerImg="/images/homepage/categories/electronics.png" 
           items={electronicsItems} 
         />
-    </Box>
+      </Box>
+    </LayoutContainer>
   );
 };
 

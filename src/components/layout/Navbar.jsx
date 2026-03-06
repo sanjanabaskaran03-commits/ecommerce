@@ -16,17 +16,20 @@ const Navbar = () => {
         borderColor: 'divider', 
         bgcolor: 'background.paper',
         width: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        
       }}
     >
       <Container 
-        disableGutters 
+        maxWidth={false}
         sx={{ 
-          px: 2,
           height: '56px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          maxWidth: "1280px",
+    margin: "0 auto",
+    px: 2
         }}
       >
         <Stack direction="row" spacing={3} alignItems="center">

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Box, Typography, Stack, useTheme
 } from '@mui/material';
+import LayoutContainer from '../../components/common/LayoutContainer';
 
 const RelatedProducts = () => {
   const theme = useTheme();
@@ -20,6 +21,7 @@ const RelatedProducts = () => {
   ];
 
   return (
+    <LayoutContainer>
     <Box
       sx={{
         p: 3,
@@ -78,6 +80,7 @@ const RelatedProducts = () => {
         ))}
       </Stack>
     </Box>
+    </LayoutContainer>
   );
 };
 

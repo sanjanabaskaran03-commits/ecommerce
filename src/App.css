@@ -1,16 +1,11 @@
-/* App.css */
-#root {
-  max-width: 1370px;
-  margin: 0px auto;
-  text-align: center; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+html, body, #root {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.MuiAppBar-root {
-  text-align: left; 
+#root {
+  width: 100%;
 }
 
 * {

@@ -8,6 +8,7 @@ import PaginationSection from "./components/PaginationSection";
 import ProductListHeader from "./components/ProductListHeader";
 import ProductList from "./components/ProductList";
 import SubscribeSection from '../components/layout/SubscribeSection';
+import LayoutContainer from '../components/common/LayoutContainer';
 
 const List = () => {
   // 1. Dynamic state for filters
@@ -28,9 +29,9 @@ const List = () => {
   return (
     <>
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 2 }}>
-      <Container maxWidth="xl">
+      
         <BreadcrumbSection />
-
+<LayoutContainer>
         <Box sx={{ display: 'flex', gap: 3, mt: 2, alignItems: 'flex-start' }}>
           
           <Box sx={{ width: 240, flexShrink: 0, display: { xs: 'none', md: 'block' } }}>
@@ -41,7 +42,7 @@ const List = () => {
             />
           </Box>
 
-          <Box sx={{ flexGrow: 1, minWidth: 0 }}>
+          <Box sx={{ flexGrow: 1, width: "100%" }}>
             <ProductListHeader />
             
             {/* 4. DYNAMIC CHIPS SECTION */}
@@ -78,11 +79,12 @@ const List = () => {
               {/* Pass activeFilters to ProductList to actually filter the data */}
               <ProductList activeFilters={activeFilters} />
             </Box>
-
-            <PaginationSection />
+ <PaginationSection />
+            
           </Box>
         </Box>
-      </Container>
+       
+      </LayoutContainer>
     </Box>
 
 

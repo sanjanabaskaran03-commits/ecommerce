@@ -6,6 +6,8 @@ import { useCart } from '../../context/CartContext'; // Adjust path to your cont
 import { useNavigate } from 'react-router-dom';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LayoutContainer from '../../components/common/LayoutContainer';
+
 
 const SavedForLater = () => {
   const theme = useTheme();
@@ -33,7 +35,8 @@ const SavedForLater = () => {
   };
 
   return (
-    <Box maxWidth="1440px" sx={{ mx: 'auto', px: 2 ,width:"1200px"}}>
+    <LayoutContainer>
+
     <Box
       sx={{
         p: 3,
@@ -124,7 +127,7 @@ const SavedForLater = () => {
         })}
       </Stack>
     </Box>
-    </Box>
+    </LayoutContainer>
   );
 };
 
