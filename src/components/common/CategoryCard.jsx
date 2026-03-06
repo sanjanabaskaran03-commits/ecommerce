@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Typography, Stack, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
 
-// Create a motion version of the MUI Box
 const MotionBox = motion(Box);
 
 const CategoryCard = ({ title, price, img }) => {
@@ -10,24 +9,29 @@ const CategoryCard = ({ title, price, img }) => {
 
   return (
     <MotionBox
-      // ANIMATION PROPERTIES
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: false,amount: 0.2 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      whileHover={{ scale: 1.01 }} // Very subtle lift
+      whileHover={{ scale: 1.01 }}
       
       sx={{
         p: 2,
         display: 'flex',
-        flexDirection: 'row', 
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
+        flexDirection: { xs: 'column', md: 'row', lg: 'row' }, 
+        justifyContent: { xs: 'center', md: 'space-between', lg: 'space-between' },
+        alignItems: { xs: 'center', md: 'flex-start' , lg: 'flex-start' },
         height: '100%',
         minHeight: '127px',
-        borderRight: '1px solid',
-        borderBottom: '1px solid',
-        borderColor: 'divider',
+        // FIX: Use backticks (`) instead of single quotes (')
+        borderRight: { 
+          xs: `1px solid ${theme.palette.divider}`, // Visible on mobile
+          md: `1px solid ${theme.palette.divider}`  // Visible on desktop
+        },
+        borderBottom: { 
+          xs: `1px solid ${theme.palette.divider}`, 
+          md: `1px solid ${theme.palette.divider}` 
+        },
         transition: '0.3s',
         cursor: 'pointer',
         '&:hover': {
@@ -35,35 +39,42 @@ const CategoryCard = ({ title, price, img }) => {
         },
       }}
     >
-      <Stack spacing={0.5} sx={{ textAlign: 'left' }}>
+      <Box
+        component={motion.img}
+        whileHover={{ scale: 1.1, rotate: 2 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        src={img}
+        alt={title}
+        sx={{
+          width: { xs: '70px', md: '80px' },
+          height: { xs: '70px', md: '80px' },
+          objectFit: 'contain',
+          alignSelf: { xs: 'center', md: 'flex-end' },
+          order: { xs: 1, md: 2 }, 
+          mb: { xs: 1, md: 0 }
+        }}
+      />
+
+      <Stack 
+        spacing={0.5} 
+        sx={{ 
+          textAlign: { xs: 'center', md: 'left' },
+          order: { xs: 2, md: 1 } 
+        }}
+      >
         <Typography 
           variant="body1" 
-          sx={{ fontWeight: 500, color: 'text.primary', fontSize: '14px' }}
+          sx={{ fontWeight: 500, color: 'text.primary', fontSize: {xs:'14px', sm:'14px', md:'10px', lg:'14px'} }}
         >
           {title}
         </Typography>
         <Typography 
           variant="caption" 
-          sx={{ color: "#8B96A5", fontSize: '12px' }}
+          sx={{ color: "#8B96A5", fontSize: '12px',width:{ xs: '100%',sm:'100%', md: '50px',lg:'50px'} }}
         >
-          From <br />
-          USD {price}
+          From USD {price}
         </Typography>
       </Stack>
-
-      <Box
-        component={motion.img} // Adding motion to the image specifically
-        whileHover={{ scale: 1.1, rotate: 2 }} // Image specific animation
-        transition={{ type: "spring", stiffness: 300 }}
-        src={img}
-        alt={title}
-        sx={{
-          width: '80px',
-          height: '80px',
-          objectFit: 'contain',
-          alignSelf: 'flex-end',
-        }}
-      />
     </MotionBox>
   );
 };

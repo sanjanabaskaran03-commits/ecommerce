@@ -4,17 +4,16 @@ import CartItem from './components/CartItem';
 import Label from './components/Label';
 import Discount from "../components/layout/Discount";
 import SavedForLater from './components/SavedForLater';
+import LayoutContainer from '../components/common/LayoutContainer';
 
 const Cart = () => {
   return (
-    <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', py: 2 }}>
-          <Container maxWidth="1440px">
+    <>
         <CartItem />
         <Label />
         <SavedForLater />
         <Discount />
-       </Container>
-       </Box>
+        </>
   );
 };
 

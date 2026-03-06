@@ -4,15 +4,16 @@ import RecommendedCard from './RecommendedCard';
 
 const RecommendedSection = ({ title, items }) => {
   return (
-    <Box sx={{ width: '100%', my: 4 }}>
+    <Box sx={{ width: '100%', my: { xs: 2, md: 4 }, px: { xs: 1, md: 0 } }}>
 
       <Typography
         variant="h5"
         sx={{
           fontWeight: 700,
-          mb: 3,
+          mb: { xs: 2, md: 3 },
           color: 'text.primary',
-          textAlign: 'left'
+          textAlign: 'left',
+          fontSize: { xs: '18px', md: '24px' } // Matched mobile header size
         }}
       >
         {title}
@@ -22,12 +23,12 @@ const RecommendedSection = ({ title, items }) => {
         sx={{
           display: 'grid',
           gridTemplateColumns: {
-            xs: 'repeat(2, 1fr)',
+            xs: 'repeat(2, 1fr)', // 2 columns on mobile
             sm: 'repeat(3, 1fr)',
             md: 'repeat(4, 1fr)',
             lg: 'repeat(5, 1fr)'
           },
-          gap: 2,
+          gap: { xs: 1, md: 2 }, // Tighter gap on mobile like the screenshot
           width: '100%'
         }}
       >

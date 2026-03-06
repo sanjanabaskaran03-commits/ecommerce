@@ -1,18 +1,28 @@
 import React from 'react';
 import { Box, Typography, useTheme } from '@mui/material';
 import LayoutContainer from '../../components/common/LayoutContainer';
+import ArabicEmirates from '/images/homepage/regions/uae.png';
+import Australia from '/images/homepage/regions/australia.png';
+import UnitedStates from '/images/homepage/regions/us.png';
+import Russia from '/images/homepage/regions/russia.png'
+import Italy from '/images/homepage/regions/italy.png'
+import Denmark from '/images/homepage/regions/denmark.png'
+import France from '/images/homepage/regions/france.png'
+import China from '/images/homepage/regions/canada.png';
+import GreatBritain from '/images/homepage/regions/britain.png';
+
 
 const regions = [
-  { name: 'Arabic Emirates', url: 'shopname.ae', img: '/images/homepage/regions/uae.png' },
-  { name: 'Australia', url: 'shopname.ae', img: '/images/homepage/regions/australia.png' },
-  { name: 'United States', url: 'shopname.ae', img: '/images/homepage/regions/us.png' },
-  { name: 'Russia', url: 'shopname.ru', img: '/images/homepage/regions/russia.png' },
-  { name: 'Italy', url: 'shopname.it', img: '/images/homepage/regions/italy.png' },
-  { name: 'Denmark', url: 'denmark.com.dk', img: '/images/homepage/regions/denmark.png' },
-  { name: 'France', url: 'shopname.com.fr', img: '/images/homepage/regions/france.png' },
-  { name: 'Arabic Emirates', url: 'shopname.ae', img: '/images/homepage/regions/uae.png' },
-  { name: 'China', url: 'shopname.ae', img: '/images/homepage/regions/canada.png' },
-  { name: 'Great Britain', url: 'shopname.co.uk', img: '/images/homepage/regions/britain.png' },
+  { name: 'Arabic Emirates', url: 'shopname.ae', img: ArabicEmirates },
+  { name: 'Australia', url: 'shopname.ae', img: Australia },
+  { name: 'United States', url: 'shopname.ae', img: UnitedStates },
+  { name: 'Russia', url: 'shopname.ru', img:Russia  },
+  { name: 'Italy', url: 'shopname.it', img:Italy  },
+  { name: 'Denmark', url: 'denmark.com.dk', img:Denmark  },
+  { name: 'France', url: 'shopname.com.fr', img: France },
+  { name: 'Arabic Emirates', url: 'shopname.ae', img: ArabicEmirates },
+  { name: 'China', url: 'shopname.ae', img: China },
+  { name: 'Great Britain', url: 'shopname.co.uk', img: GreatBritain },
 ];
 
 const SuppliersByRegion = () => {
@@ -56,7 +66,6 @@ const SuppliersByRegion = () => {
                 mb: 1,
               }}
             >
-              {/* FLAG IMAGE */}
               <Box
                 component="img"
                 src={region.img}

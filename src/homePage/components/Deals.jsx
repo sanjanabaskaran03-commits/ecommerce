@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Stack, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
 import LayoutContainer from '../../components/common/LayoutContainer';
+import Smartwatch from "/images/homepage/deals/watch.png"
+import Laptop from "/images/homepage/deals/laptop.png"
+import Camera from "/images/homepage/deals/camera.png"
+import Headphone from "/images/homepage/deals/headphone.png"
+import Phone from "/images/homepage/deals/phone.png"
 
 const MotionBox = motion(Box);
 
 const Deals = () => {
   const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, min: 0, sec: 0 });
 
   useEffect(() => {
@@ -30,44 +36,44 @@ const Deals = () => {
   }, []);
 
   const deals = [
-    { name: "Smart watches", discount: "-25%", img: "/images/homepage/deals/watch.png" },
-    { name: "Laptops", discount: "-15%", img: "/images/homepage/deals/laptop.png" },
-    { name: "Canon cameras", discount: "-25%", img: "/images/homepage/deals/camera.png" },
-    { name: "Headphones", discount: "-25%", img: "/images/homepage/deals/headphone.png" },
-    { name: "GoPro cameras", discount: "-40%", img: "/images/homepage/deals/phone.png" },
+    { name: "Smart watches", discount: "-25%", img: Smartwatch },
+    { name: "Laptops", discount: "-15%", img: Laptop },
+    { name: "Canon cameras", discount: "-25%", img: Camera },
+    { name: "Headphones", discount: "-25%", img: Headphone },
+    { name: "GoPro cameras", discount: "-40%", img: Phone },
   ];
 
   return (
     <LayoutContainer>
       <Paper
-         variant="outlined"
+        variant="outlined"
         sx={{
-          p: 2,
           mt: 4,
           borderRadius: "8px",
-          borderColor: "#DEE2E7",
+          borderColor: isDark ? "divider" : "#DEE2E7",
           bgcolor: "background.paper",
           display: 'flex',
-          justifyContent: 'center',
+          flexDirection: { xs: 'column', md: 'row' },
+          overflow: 'hidden'
         }}
       >
-        {/* TIMER SECTION */}
         <Box 
           sx={{ 
             p: 3, 
-            width: '280px', 
-            minWidth: '280px', 
-            // RESTORED: Explicitly using theme divider for the separator
+            width: { xs: '100%', md: '280px' }, 
+            minWidth: { md: '280px' }, 
             borderRight: { xs: 'none', md: `1px solid ${theme.palette.divider}` }, 
             borderBottom: { xs: `1px solid ${theme.palette.divider}`, md: 'none' },
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            alignItems: { xs: 'center', md: 'flex-start' },
+            textAlign: { xs: 'center', md: 'left' }
           }}
         >
-          <Typography variant="h6" sx={{ fontWeight: 600, textAlign: "left" }}>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
             Deals and offers
           </Typography>
-          <Typography sx={{ color: 'text.secondary', mb: 3, fontSize: "14px", textAlign: "left" }}>
+          <Typography sx={{ color: 'text.secondary', mb: 2, fontSize: "14px" }}>
             Hygiene equipments
           </Typography>
 
@@ -79,8 +85,17 @@ const Deals = () => {
           </Stack>
         </Box>
 
-        {/* PRODUCTS SECTION */}
-        <Box sx={{ display: 'flex', flex: 1, width: '100%', overflowX: {xs: 'auto', md: 'visible'} }}>
+        <Box 
+          sx={{ 
+            display: 'flex', 
+            flex: 1, 
+            width: '100%', 
+            overflowX: { xs: 'auto', md: 'visible' },
+            '&::-webkit-scrollbar': { display: 'none' },
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+          }}
+        >
           {deals.map((item, index) => (
             <MotionBox 
               key={index}
@@ -89,12 +104,10 @@ const Deals = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ 
-                backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.01)'
+                backgroundColor: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.01)'
               }}
               sx={{ 
-                flex: 1,
-                minWidth: {xs: '160px', md: 'auto'},
-                // Product separators also use theme divider
+                flex: { xs: '0 0 160px', md: 1 }, 
                 borderRight: index === deals.length - 1 ? 'none' : `1px solid ${theme.palette.divider}`, 
                 p: 2,
                 display: 'flex',
@@ -110,7 +123,7 @@ const Deals = () => {
                   src={item.img} 
                   alt={item.name}
                   sx={{ 
-                    height: '120px', 
+                    height: { xs: '100px', md: '120px' }, 
                     width: 'auto', 
                     maxWidth: '120px', 
                     mb: 2, 
@@ -130,7 +143,7 @@ const Deals = () => {
                   color: '#EB001B', 
                   px: 1.5, py: 0.5, 
                   borderRadius: '20px', 
-                  fontSize: '14px', 
+                  fontSize: '12px', 
                   fontWeight: 600 
                 }}
               >
@@ -149,8 +162,8 @@ const TimerBox = ({ value, label }) => (
     sx={{ 
       bgcolor: '#606060', 
       color: '#fff',
-      width: '55px', 
-      height: '60px', 
+      width: '50px', 
+      height: '50px', 
       borderRadius: '4px',
       display: 'flex',
       flexDirection: 'column',
@@ -158,10 +171,10 @@ const TimerBox = ({ value, label }) => (
       justifyContent: 'center'
     }}
   >
-    <Typography sx={{ fontWeight: 700, fontSize: '18px', lineHeight: 1 }}>
+    <Typography sx={{ fontWeight: 700, fontSize: '16px', lineHeight: 1 }}>
       {String(value).padStart(2, '0')}
     </Typography>
-    <Typography sx={{ fontSize: '12px', opacity: 0.8 }}>
+    <Typography sx={{ fontSize: '10px', opacity: 0.8 }}>
       {label}
     </Typography>
   </Box>

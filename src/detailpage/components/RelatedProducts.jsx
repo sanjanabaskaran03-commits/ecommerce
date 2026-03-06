@@ -3,83 +3,122 @@ import {
   Box, Typography, Stack, useTheme
 } from '@mui/material';
 import LayoutContainer from '../../components/common/LayoutContainer';
+import Wallet from '/images/homepage/recommended_items/wallet.png';
+import Smartwatch from '/images/homepage/deals/watch.png';
+import Headphone from '/images/homepage/recommended_items/headphone.png'; 
+import Poco from '/images/homepage/categories/tab.png';
+import Canon from '/images/homepage/deals/camera.png';
+import Watch from '/images/homepage/deals/phone.png';
 
 const RelatedProducts = () => {
   const theme = useTheme();
-  
-  // Define missing variables
   const isDark = theme.palette.mode === 'dark';
   const borderColor = theme.palette.divider;
 
   const productsArray = [
-    { id: 1, title: 'Wallet', price: '$32.00-$40.00', img: '/images/homepage/recommended_items/wallet.png' },
-    { id: 2, title: 'Smart watch', price: '$32.00-$40.00', img: '/images/homepage/deals/watch.png' },
-    { id: 3, title: 'Headphone', price: '$32.00-$40.00', img: '/images/homepage/recommended_items/headphone.png' },
-    { id: 4, title: 'Poco X5 Pro 5G', price: '$32.00-$40.00', img: '/images/homepage/categories/tab.png' },
-    { id: 5, title: 'Canon Camera', price: '$32.00-$40.00', img: '/images/homepage/deals/camera.png' },
-    { id: 6, title: "Huawei Watch ", price: '$32.00-$40.00', img: '/images/homepage/deals/phone.png' }
+    { id: 1, title: 'Wallet', price: '$32.00-$40.00', img: Wallet },
+    { id: 2, title: 'Smart watch', price: '$32.00-$40.00', img: Smartwatch },
+    { id: 3, title: 'Headphone', price: '$32.00-$40.00', img: Headphone },
+    { id: 4, title: 'Poco X5 Pro 5G', price: '$32.00-$40.00', img: Poco },
+    { id: 5, title: 'Canon Camera', price: '$32.00-$40.00', img: Canon },
+    { id: 6, title: "Huawei Watch ", price: '$32.00-$40.00', img: Watch }
   ];
 
   return (
     <LayoutContainer>
-    <Box
-      sx={{
-        p: 3,
-        borderRadius: '6px',
-        bgcolor: 'background.paper',
-        border: '1px solid',
-        borderColor: borderColor,
-        mt: 3
-      }}
-    >
-      <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: 'text.primary', textAlign: 'left' }}>
-        Related products
-      </Typography>
-
-      {/* Main Container for items */}
-      <Stack 
-        direction="row" 
-        flexWrap="wrap" 
-        gap={3} 
-        sx={{ justifyContent: 'space-between' }}
+      <Box
+        sx={{
+          p: 3,
+          borderRadius: '6px',
+          bgcolor: 'background.paper',
+          border: '1px solid',
+          borderColor: borderColor,
+          mt: 3
+        }}
       >
-        {productsArray.map((item) => (
-          <Stack 
-            key={item.id} 
-            direction="row"
-            flexDirection='column' 
-            spacing={2} 
-            alignItems="center"
-            justifyContent="flex-start"
-            sx={{  flex: '1 1 auto'}}
-          >
-            <Box
-              component="img"
-              src={item.img}
-              alt={item.title}
-              sx={{
-                width: 120,
-                height: 120,
-                borderRadius: '4px',
-                border: '1px solid',
-                borderColor: borderColor,
-                p: 0.5,
-                objectFit: 'contain',
-                bgcolor: isDark ? 'white' : 'transparent' ,
+        <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: 'text.primary', textAlign: 'left' }}>
+          Related products
+        </Typography>
+
+        <Stack 
+          direction="row" 
+          spacing={2}
+          flexWrap="nowrap"
+          sx={{ 
+            justifyContent: { md: 'space-between' },
+            overflowX: 'auto', 
+            pb: { xs: 2, md: 0 }, 
+            '&::-webkit-scrollbar': { 
+              height: '4px',
+              display: { xs: 'block', md: 'none' } 
+            },
+            '&::-webkit-scrollbar-thumb': { 
+              bgcolor: 'divider', 
+              borderRadius: '10px' 
+            },
+            '&:hover::-webkit-scrollbar': {
+              display: 'block'
+            }
+          }}
+        >
+          {productsArray.map((item) => (
+            <Stack 
+              key={item.id} 
+              direction="column" 
+              alignItems="flex-start"
+              sx={{ 
+                flex: { xs: '0 0 auto', md: '1 1 auto' }, 
+                minWidth: { xs: '140px', md: '120px' },
+                maxWidth: { md: '180px' }, 
+                cursor: 'pointer'
               }}
-            />
-            <Box>
-              <Typography sx={{ color: 'text.primary', fontWeight: 400, lineHeight: 1.2, fontSize: "14px", textAlign: 'left' ,mt:2}}>
-                {item.title} {/* Changed from item.name to item.title to match your data */}
-              </Typography>
-              <Typography sx={{ color: '#8B96A5', mt: 0.5, display: 'block', textAlign: "left", fontSize: "14px" }}>
-                {item.price}
-              </Typography>
-            </Box>
-          </Stack>
-        ))}
-      </Stack>
-    </Box>
+            >
+              <Box
+                component="img"
+                src={item.img}
+                alt={item.title}
+                sx={{
+                  width: '100%', 
+                  height: { xs: 140, md: 160 },
+                  borderRadius: '4px',
+                  border: '1px solid',
+                  borderColor: borderColor,
+                  p: 1,
+                  objectFit: 'contain',
+                  bgcolor: isDark ? 'white' : 'transparent' ,
+                  transition: 'transform 0.2s',
+                  '&:hover': {
+                    transform: 'scale(1.02)'
+                  }
+                }}
+              />
+              <Box sx={{ width: '100%' }}>
+                <Typography 
+                  sx={{ 
+                    color: 'text.primary', 
+                    fontWeight: 400, 
+                    lineHeight: 1.2, 
+                    fontSize: "14px", 
+                    textAlign: 'left', 
+                    mt: 1.5,
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'normal'
+                  }}
+                >
+                  {item.title}
+                </Typography>
+                <Typography sx={{ color: '#8B96A5', mt: 0.5, textAlign: "left", fontSize: "14px" }}>
+                  {item.price}
+                </Typography>
+              </Box>
+            </Stack>
+          ))}
+        </Stack>
+      </Box>
     </LayoutContainer>
   );
 };

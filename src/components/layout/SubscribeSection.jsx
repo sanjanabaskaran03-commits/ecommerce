@@ -8,59 +8,29 @@ const SubscribeSection = () => {
   const isDark = theme.palette.mode === 'dark';
 
   return (
-    <Box
-      sx={{
-        width: '100%',
-        bgcolor: isDark ? 'background.default' : '#EFF2F4',
-        py: 6,
-      }}
-    >
+    <Box sx={{ width: '100%', bgcolor: isDark ? 'background.default' : '#EFF2F4', py: 6 }}>
       <LayoutContainer>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-          }}
-        >
-          {/* HEADER TEXT */}
-          <Typography
-            variant="h5"
-            sx={{
-              fontWeight: 700,
-              color: 'text.primary',
-              mb: 1,
-            }}
-          >
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
             Subscribe on our newsletter
           </Typography>
-
-          <Typography
-            variant="body1"
-            sx={{
-              color: 'text.secondary',
-              mb: 4,
-              fontSize: '16px',
-            }}
-          >
+          <Typography variant="body1" sx={{ color: 'text.secondary', mb: 4, fontSize: '16px' }}>
             Get daily news on upcoming offers from many suppliers all over the world
           </Typography>
 
-          {/* FORM SECTION */}
           <Box
             component="form"
             sx={{
               display: 'flex',
               gap: 1,
-              width: { xs: '90%', sm: '400px' },
-              flexDirection: { xs: 'column', sm: 'row' },
+              // xs/sm: Stacked & wider | md/lg: Row & fixed width
+              width: { xs: '100%', md: '400px' },
+              flexDirection: { xs: 'column', md: 'row' },
             }}
           >
             <TextField
               fullWidth
               placeholder="Email"
-              variant="outlined"
               size="small"
               InputProps={{
                 startAdornment: (
@@ -69,30 +39,18 @@ const SubscribeSection = () => {
                   </InputAdornment>
                 ),
               }}
-              sx={{
-                bgcolor: 'background.paper',
-                borderRadius: '6px',
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'divider',
-                  },
-                },
-              }}
+              sx={{ bgcolor: 'background.paper', borderRadius: '6px' }}
             />
-
             <Button
               variant="contained"
               disableElevation
               sx={{
                 bgcolor: '#127FFF',
-                color: '#fff',
                 textTransform: 'none',
                 px: 3,
                 fontWeight: 400,
-                whiteSpace: 'nowrap',
-                '&:hover': {
-                  bgcolor: '#0067DB',
-                },
+                // xs/sm: Full width button | md/lg: Content width
+                width: { xs: '100%', md: 'auto' }
               }}
             >
               Subscribe

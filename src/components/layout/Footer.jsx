@@ -39,23 +39,20 @@ const Footer = () => {
   return (
     <Box component="footer" sx={{ bgcolor: 'background.paper', pt: { xs: 4, md: 6 }, width: '100%' }}>
       
-      {/* MAIN CONTENT AREA */}
       <Container 
-        maxWidth={false} // Ensures content doesn't stretch too wide on huge monitors
+        maxWidth={false} monitors
         sx={{ 
           maxWidth: "1280px",
     margin: "0 auto",
     px: 2, 
           pb: 6,
           display: 'flex',
-          // Mobile: Stack | Tablet: Wrap | Desktop: Row
           flexDirection: { xs: 'column', sm: 'row' },
           flexWrap: 'wrap',
           textAlign: "left",
           gap: { xs: 4, md: 2, lg: 4 }
         }}
       >
-        {/* BRAND SECTION */}
         <Box sx={{ 
           flex: { xs: '1 1 100%', sm: '1 1 30%', md: '0 0 250px' },
           textAlign: "left" 
@@ -144,7 +141,7 @@ const Footer = () => {
     margin: "0 auto",
     px: 2,
             display: 'flex', 
-            flexDirection: { xs: 'column', sm: 'row' },
+            flexDirection: { xs: 'row', sm: 'row' },
             justifyContent: 'space-between', 
             alignItems: 'center',
             gap: { xs: 2, sm: 0 }

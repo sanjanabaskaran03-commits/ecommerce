@@ -31,7 +31,7 @@ const BrandHeader = () => {
         borderColor: 'divider',
         bgcolor: 'background.paper',
         width: '100%',
-        minHeight: { xs: 'auto', md: '80px' }, // xs & sm are auto, md & lg are 80px
+        minHeight: { xs: 'auto', md: '80px' }, 
         display: 'flex',
         justifyContent: 'center',
       }}
@@ -47,7 +47,7 @@ const BrandHeader = () => {
         <Toolbar
           disableGutters
           sx={{
-            flexDirection: { xs: 'column', md: 'row' }, // Stack on mobile/tablet, row on desktop
+            flexDirection: { xs: 'column', md: 'row' },
             justifyContent: 'space-between',
             alignItems: 'center',
             py: { xs: 1.5, md: 3 },
@@ -193,11 +193,28 @@ const BrandHeader = () => {
 
       <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <Box sx={{ width: 250 }} onClick={() => setDrawerOpen(false)}>
-          <List>
-            {['Home', 'Categories', 'Orders', 'Settings'].map((text) => (
-              <ListItem key={text} disablePadding>
-                <Button fullWidth sx={{ justifyContent: 'flex-start', px: 2, py: 1.5, color: 'text.primary' }}>
-                  {text}
+          <List sx={{ pt: 2 }}>
+            {[
+              { text: 'Home', path: '/' },
+              { text: 'Categories', path: '/shop' }, 
+              { text: 'Orders', path: '/orders' },
+              { text: 'Settings', path: '/settings' }
+            ].map((item) => (
+              <ListItem key={item.text} disablePadding>
+                <Button 
+                  fullWidth 
+                  onClick={() => navigate(item.path)}
+                  sx={{ 
+                    justifyContent: 'flex-start', 
+                    px: 3, 
+                    py: 1.5, 
+                    color: 'text.primary',
+                    textTransform: 'none',
+                    fontSize: '16px',
+                    '&:hover': { bgcolor: 'action.hover' }
+                  }}
+                >
+                  {item.text}
                 </Button>
               </ListItem>
             ))}

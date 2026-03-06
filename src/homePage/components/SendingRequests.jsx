@@ -26,7 +26,7 @@ const SendingRequests = () => {
     <LayoutContainer>
       <Box
         sx={{
-          borderRadius: '8px',
+          borderRadius: { xs: 0, md: '8px' }, 
           overflow: 'hidden',
           position: 'relative',
           backgroundImage: isDark 
@@ -39,22 +39,46 @@ const SendingRequests = () => {
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           p: { xs: 3, md: 5 },
-          minHeight: '420px'
+          minHeight: { xs: 'auto', md: '420px' }
         }}
       >
 
-        {/* Left Side: Text Content */}
         <Box sx={{ color: '#fff', maxWidth: '440px', textAlign: 'left', mt: { md: 2 } }}>
-          <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, lineHeight: 1.2 }}>
+          <Typography 
+            variant="h4" 
+            sx={{ 
+              fontWeight: 600, 
+              mb: { xs: 3, md: 2 }, 
+              lineHeight: 1.2,
+              fontSize: { xs: '18px', md: '32px' } 
+            }}
+          >
             An easy way to send <br /> requests to all suppliers
           </Typography>
-          <Typography sx={{ opacity: 0.8, fontSize: '16px' }}>
+          
+          <Typography sx={{ display: { xs: 'none', md: 'block' }, opacity: 0.8, fontSize: '16px' }}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
             sed do eiusmod tempor incididunt.
           </Typography>
+
+          <Button
+            variant="contained"
+            disableElevation
+            sx={{
+              display: { xs: 'block', md: 'none' },
+              bgcolor: '#0D6EFD',
+              textTransform: 'none',
+              fontWeight: 500,
+              borderRadius: '6px',
+              fontSize: '13px',
+              px: 2,
+              py: 0.5
+            }}
+          >
+            Send inquiry
+          </Button>
         </Box>
 
-        {/* Right Side: Inquiry Form */}
         <Paper
           elevation={0}
           sx={{
@@ -62,7 +86,7 @@ const SendingRequests = () => {
             width: { xs: '100%', sm: '440px' },
             borderRadius: '10px',
             bgcolor: isDark ? 'background.paper' : '#fff',
-            display: 'flex',
+            display: { xs: 'none', md: 'flex' }, 
             flexDirection: 'column',
             gap: 2,
             mt: { xs: 4, md: 0 },

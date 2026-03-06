@@ -9,14 +9,20 @@ const RecommendedCard = ({ img, price, description }) => {
 
   return (
     <MotionPaper
-      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      // ANIMATION SETTINGS
+      initial={{ opacity: 0, scale: 0.9, y: 30 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      // FIX: Changed once to false so it animates every time you scroll
+      viewport={{ once: false, amount: 0.2 }} 
+      transition={{ 
+        duration: 0.2, 
+        ease: [0.215, 0.61, 0.355, 1] // Smooth cubic-bezier for a premium feel
+      }}
+      whileHover={{ y: -8, transition: { duration: 0.2 } }}
+      
       variant="outlined"
       sx={{
-        p: 2,
+        p: { xs: 1.5, md: 2 },
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -24,6 +30,7 @@ const RecommendedCard = ({ img, price, description }) => {
         bgcolor: 'background.paper',
         transition: '0.3s',
         cursor: 'pointer',
+        borderColor: '#DEE2E7',
         '&:hover': {
           boxShadow: theme.shadows[4],
           borderColor: '#8a8888'
@@ -33,16 +40,16 @@ const RecommendedCard = ({ img, price, description }) => {
       <Box
         sx={{
           width: '100%',
-          height: 180,
+          height: { xs: 140, md: 180 },
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          mb: 2
+          mb: { xs: 1, md: 2 }
         }}
       >
         <Box
           component={motion.img}
-          whileHover={{ scale: 1.08 }}
+          whileHover={{ scale: 1.1 }}
           src={img}
           sx={{
             maxHeight: '100%',
@@ -57,7 +64,8 @@ const RecommendedCard = ({ img, price, description }) => {
         sx={{
           fontWeight: 600,
           color: 'text.primary',
-          textAlign: "left"
+          textAlign: "left",
+          fontSize: { xs: '14px', md: '16px' }
         }}
       >
         ${price}
@@ -66,10 +74,15 @@ const RecommendedCard = ({ img, price, description }) => {
       <Typography
         variant="body2"
         sx={{
-          color: 'text.secondary',
+          color: '#8B96A5',
           mt: 0.5,
-          lineHeight: 1.4,
-          textAlign: "left"
+          lineHeight: 1.3,
+          textAlign: "left",
+          fontSize: { xs: '12px', md: '14px' },
+          display: '-webkit-box',
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: 'vertical',
+          overflow: 'hidden'
         }}
       >
         {description}

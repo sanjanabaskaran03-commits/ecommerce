@@ -10,7 +10,7 @@ import LayoutContainer from '../../components/common/LayoutContainer';
 const Label = () => {
   return (
     <LayoutContainer>
-    <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2} mt={3}>
+    <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2} mt={5} sx={{display:{xs:'none',md:"flex"}}}>
         <Stack direction="row" alignItems="center" spacing={1}>
             <Stack width="40px" height="40px" borderRadius="50%" bgcolor="#DEE2E7"  directtion="row" alignItems="center" justifyContent="center">
             <LockIcon sx={{color:"#979797"}} />

@@ -4,17 +4,22 @@ import {
 } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import LayoutContainer from '../../components/common/LayoutContainer';
+import Apple from '/images/listviewpage/mobile.png';
+import Samsung from '/images/listviewpage/mobile2.png';
+import Poco from '/images/listviewpage/tab.png';
+import Canon from '/images/listviewpage/laptop.png';
+import Watch from '/images/listviewpage/watch.png';
 
 
 const Description = () => {
   const [activeTab, setActiveTab] = useState('Description');
 
   const relatedProducts = [
-    { id: 1, name: 'Apple iPhone 14 Pro', price: '$7.00 - $99.50', img: '/images/listviewpage/mobile.png' },
-    { id: 2, name: 'Samsung Galaxy S23 Ultra', price: '$7.00 - $99.50', img: '/images/listviewpage/mobile2.png' },
-    { id: 3, name: 'Poco X5 Pro 5G', price: '$7.00 - $99.50', img: '/images/listviewpage/tab.png' },
-    { id: 4, name: 'Canon Camera EOS 2000', price: '$7.00 - $99.50', img: '/images/listviewpage/laptop.png' },
-    { id: 5, name: "Huawei Watch GT 3", price: '$7.00 - $99.50', img: '/images/listviewpage/watch.png' },
+    { id: 1, name: 'Apple iPhone 14 Pro', price: '$7.00 - $99.50', img: Apple },
+    { id: 2, name: 'Samsung Galaxy S23 Ultra', price: '$7.00 - $99.50', img: Samsung },
+    { id: 3, name: 'Poco X5 Pro 5G', price: '$7.00 - $99.50', img: Poco },
+    { id: 4, name: 'Canon Camera EOS 2000', price: '$7.00 - $99.50', img: Canon },
+    { id: 5, name: "Huawei Watch GT 3", price: '$7.00 - $99.50', img: Watch },
   ];
 
   const specs = [
@@ -28,13 +33,12 @@ const Description = () => {
   return (
     <LayoutContainer>
     <Stack
-      direction={{ xs: 'column', md: 'row' }}
+      direction={{ md: 'row' }}
       spacing={2}
       justifyContent="space-between"
        alignItems="flex-start"
-      sx={{ mt: 3,display:"flex" }}
+      sx={{ mt: 3,display:{xs:'none',md:"flex" }}}
     >
-      {/* LEFT: MAIN CONTENT AREA */}
       <Stack>
       <Box sx={{ flex: 3, minWidth: 0 }}>
         <Box
@@ -43,10 +47,9 @@ const Description = () => {
             borderColor: 'divider',
             borderRadius: '6px',
             overflow: 'hidden',
-            bgcolor: 'background.paper', // Added bgcolor back to the inner box for content readability
+            bgcolor: 'background.paper', 
           }}
         >
-          {/* TAB NAVIGATION */}
           <Box sx={{ borderBottom: '1px solid', borderColor: 'divider', px: 3 }}>
             <Stack direction="row" spacing={3}>
               {['Description', 'Reviews', 'Shipping', 'About seller'].map((tab) => (
@@ -75,14 +78,12 @@ const Description = () => {
             </Stack>
           </Box>
 
-          {/* CONTENT BODY */}
           <Box sx={{ p: 3 }}>
             <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, lineHeight: 1.6, textAlign: 'left' }}>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br /> 
 Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
             </Typography>
 
-            {/* SPECIFICATION TABLE */}
             <TableContainer
               component={Box}
               sx={{
@@ -126,7 +127,6 @@ Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa
               </Table>
             </TableContainer>
 
-            {/* FEATURES LIST */}
             <Stack spacing={1}>
               {['Some great feature name here', 'Lorem ipsum dolor sit amet, consectetur', 'Duis aute irure dolor in reprehenderit', 'Some great feature name here'].map((text, i) => (
                 <Stack key={i} direction="row" spacing={1} alignItems="center">
@@ -140,7 +140,6 @@ Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa
       </Box>
       </Stack>
 
-      {/* RIGHT: SIDEBAR SECTION */}
       <Stack>
       <Box sx={{
         flex: 1,

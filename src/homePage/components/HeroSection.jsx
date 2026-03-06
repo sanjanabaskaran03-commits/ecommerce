@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Box, Typography, Stack, List, ListItem,
-  ListItemText, Button, Paper, IconButton
+  ListItemText, Button, Paper, IconButton, Container
 } from '@mui/material';
 import { Person } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
-import { Container } from "@mui/material";
+import Banner from "/images/homepage/herosection/Banner.png"
+import Banner1 from "images/homepage/herosection/Banner1.webp"
+import Banner2 from "images/homepage/herosection/Banner2.avif"
+import Banner5 from "images/homepage/herosection/Banner5.webp"
 
 const HeroSection = () => {
   const theme = useTheme();
@@ -17,25 +20,25 @@ const HeroSection = () => {
     {
       title: "Electronic items",
       subtitle: "Latest trending",
-      img: "images/homepage/herosection/Banner.png",
+      img: Banner,
       buttonText: "Learn more"
     },
     {
       title: "Clothing & Wear",
       subtitle: "Classic summer",
-      img: "images/homepage/herosection/Banner1.webp",
+      img: Banner1,
       buttonText: "Shop now"
     },
     {
       title: "Sports & Outdoor",
       subtitle: "New equipment",
-      img: "images/homepage/herosection/Banner2.avif",
+      img: Banner2,
       buttonText: "Explore"
     },
     {
       title: "Home Interiors",
       subtitle: "Modern design",
-      img: "images/homepage/herosection/Banner5.webp",
+      img: Banner5,
       buttonText: "View collection"
     }
   ];
@@ -61,7 +64,7 @@ const HeroSection = () => {
     if (category === "Mobiles") {
       navigate('/shop');
     } else {
-      console.log(`${category} clicked, but navigation is only for Automobiles.`);
+      console.log(`${category} clicked`);
     }
   };
 
@@ -79,29 +82,61 @@ const HeroSection = () => {
           variant="outlined"
           sx={{
             width: "100%",
-            p: 2,
+            p: { xs: 0, md: 2 }, 
             borderRadius: "8px",
             bgcolor: "background.paper",
             borderColor: isDark ? "divider" : "#DEE2E7",
-            boxShadow: "none"
+            boxShadow: "none",
+            overflow: "hidden"
           }}
         >
-          {/* Main Flex Container instead of Grid */}
-          <Box sx={{ display: "flex", justifyContent: "space-between", gap: 2, flexDirection: { xs: 'column', md: 'row' } }}>
+          <Box sx={{ 
+            display: "flex", 
+            justifyContent: "space-between", 
+            gap: { xs: 0, md: 2 }, 
+            flexDirection: { xs: 'column', md: 'row' } 
+          }}>
 
-            {/* LEFT - Flex item 1 */}
-            <Box sx={{ width: { xs: '100%', md: '200px' }, flexShrink: 0 }}>
-              <List component="nav" sx={{ p: 0 }}>
+            <Box 
+              sx={{ 
+                width: { xs: '100%', md: '200px' }, 
+                flexShrink: 0,
+                borderBottom: { xs: `1px solid ${isDark ? '#333' : '#E0E7EE'}`, md: 'none' },
+                overflowX: { xs: 'auto', md: 'visible' },
+                whiteSpace: { xs: 'nowrap', md: 'normal' },
+                '&::-webkit-scrollbar': { display: 'none' },
+                msOverflowStyle: 'none',
+                scrollbarWidth: 'none',
+              }}
+            >
+              <List 
+                component="nav" 
+                sx={{ 
+                  p: { xs: 1, md: 0 },
+                  display: { xs: 'flex', md: 'block' }, 
+                  flexDirection: { xs: 'row', md: 'column' },
+                }}
+              >
                 {categories.map((item, index) => (
                   <ListItem
-                    button
                     key={index}
                     onClick={() => handleCategoryClick(item)}
                     sx={{
                       borderRadius: '6px',
-                      mb: 0.8,
+                      mb: { xs: 0, md: 0.8 },
+                      mr: { xs: 1, md: 0 },
                       py: 0.8,
-                      cursor: 'pointer', // Added hand symbol here
+                      px: { xs: 2, md: 1.5 },
+                      width: { xs: 'auto', md: '100%' },
+                      cursor: 'pointer',
+                      bgcolor: { 
+                        xs: isDark ? 'rgba(255,255,255,0.05)' : '#EFF2F4', 
+                        md: 'transparent' 
+                      },
+                      border: {
+                        xs: `1px solid ${isDark ? '#444' : '#DEE2E7'}`,
+                        md: 'none'
+                      },
                       '&:hover': {
                         bgcolor: isDark ? 'rgba(255,255,255,0.08)' : '#E5F1FF'
                       }
@@ -110,8 +145,9 @@ const HeroSection = () => {
                     <ListItemText
                       primary={item}
                       primaryTypographyProps={{
-                        fontSize: '15px',
-                        color: isDark ? '#e0e0e0' : '#505050'
+                        fontSize: '14px',
+                        fontWeight: 500,
+                        color: isDark ? '#e0e0e0' : '#0D6EFD', 
                       }}
                     />
                   </ListItem>
@@ -119,15 +155,14 @@ const HeroSection = () => {
               </List>
             </Box>
 
-            {/* CENTER - Flex item 2 */}
             <Box
               sx={{
-                height: '430px',
-                flexGrow: 1, // Takes up remaining space
-                maxWidth: '670px',
+                height: { xs: '200px', sm: '300px', md: '430px' },
+                flexGrow: 1,
+                maxWidth: { md: '670px' },
                 position: 'relative',
                 overflow: 'hidden',
-                borderRadius: '4px',
+                borderRadius: { xs: 0, md: '4px' },
                 bgcolor: isDark ? '#1e1e1e' : '#f8f9fa'
               }}
             >
@@ -141,157 +176,44 @@ const HeroSection = () => {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  objectPosition: 'center',
                   animation: 'fadeIn 0.8s ease-in-out',
-                  zIndex: 1,
-                  opacity: isDark ? 0.85 : 1,
-                  '@keyframes fadeIn': {
-                    '0%': { opacity: 0.5 },
-                    '100%': { opacity: 1 }
-                  }
+                  '@keyframes fadeIn': { '0%': { opacity: 0.5 }, '100%': { opacity: 1 } }
                 }}
               />
-
-              <Box
-                sx={{
-                  position: 'relative',
-                  zIndex: 2,
-                  p: 5,
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'flex-start'
-                }}
-              >
-                <Typography
-                  variant="h5"
-                  sx={{
-                    mb: 1,
-                    color: isDark ? '#ffffff' : '#1c1c1c',
-                    position: "absolute",
-                    top: "20%",
-                    left: "5%"
-                  }}
-                >
+              <Box sx={{ position: 'relative', zIndex: 2, p: { xs: 2, md: 5 }, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <Typography variant="h6" sx={{ color: '#1c1c1c', mb: 1, fontSize: { xs: '1rem', md: '1.5rem' } }}>
                   {slides[activeSlide].subtitle}
                 </Typography>
-
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    mb: 4,
-                    color: isDark ? '#ffffff' : '#1c1c1c',
-                    maxWidth: '450px',
-                    position: "absolute",
-                    top: "28%",
-                    left: "5%",
-                    fontSize: "42px"
-                  }}
-                >
+                <Typography sx={{ fontWeight: "bold", color: '#1c1c1c', mb: 2, fontSize: { xs: '1.5rem', md: '2.5rem' }, lineHeight: 1.2 }}>
                   {slides[activeSlide].title}
                 </Typography>
-
-                <Button
-                  variant="contained"
-                  disableElevation
-                  sx={{
-                    bgcolor: "#fff",
-                    color: "#1c1c1c",
-                    px: 3,
-                    py: 1,
-                    borderRadius: '6px',
-                    textTransform: 'none',
-                    fontWeight: 600,
-                  }}
-                >
+                <Button variant="contained" sx={{ bgcolor: "#fff", color: "#1c1c1c", width: 'fit-content', textTransform: 'none' }}>
                   {slides[activeSlide].buttonText}
                 </Button>
               </Box>
             </Box>
 
-            {/* RIGHT - Flex item 3 */}
-            <Box sx={{ width: { xs: '100%', md: '250px' }, flexShrink: 0 }}>
-              <Stack spacing={1.5} sx={{ height: 'auto' }}>
-
-                <Box sx={{
-                  bgcolor: isDark ? '#1f2a38' : '#E3F0FF',
-                  p: 2,
-                  borderRadius: '8px'
-                }}>
+            <Box sx={{ width: { md: '250px' }, display: { xs: 'none', md: 'block' }, flexShrink: 0 }}>
+              <Stack spacing={1.5}>
+                <Box sx={{ bgcolor: isDark ? '#1f2a38' : '#E3F0FF', p: 2, borderRadius: '8px' }}>
                   <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 2 }}>
-                    <IconButton sx={{
-                      width: 44,
-                      height: 44,
-                      bgcolor: isDark ? '#0D6EFD' : '#AFD0FF',
-                      color: '#fff'
-                    }}>
-                      <Person />
-                    </IconButton>
-                    <Typography sx={{
-                      fontWeight: 500,
-                      fontSize: "16px",
-                      textAlign: "left",
-                      color: isDark ? '#ffffff' : 'inherit'
-                    }}>
-                      Hi, user <br /> let's get started
-                    </Typography>
+                    <IconButton sx={{ bgcolor: '#0D6EFD', color: '#fff' }}><Person /></IconButton>
+                    <Typography sx={{ fontWeight: 500, fontSize: "16px" }}>Hi, user <br /> let's get started</Typography>
                   </Stack>
-
                   <Stack spacing={1}>
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      sx={{ textTransform: 'none', bgcolor: '#0D6EFD' }}
-                    >
-                      Join now
-                    </Button>
-
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      sx={{
-                        bgcolor: isDark ? '#2c2c2c' : '#fff',
-                        textTransform: 'none',
-                        color: "#0D6EFD",
-                        border: isDark ? '1px solid #444' : '1px solid #DEE2E7'
-                      }}
-                    >
-                      Log in
-                    </Button>
+                    <Button variant="contained" fullWidth sx={{ textTransform: 'none', bgcolor: '#0D6EFD' }}>Join now</Button>
+                    <Button variant="outlined" fullWidth sx={{ textTransform: 'none', bgcolor: '#fff' }}>Log in</Button>
                   </Stack>
                 </Box>
-
-                <Box sx={{
-                  bgcolor: isDark ? '#a3541f' : '#F38332',
-                  p: 2,
-                  borderRadius: '8px',
-                  color: '#fff',
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center'
-                }}>
-                  <Typography sx={{ fontSize: '19px', width: "140px", textAlign: "left" }}>
-                    Get US $10 off with a new supplier
-                  </Typography>
+                <Box sx={{ bgcolor: '#F38332', p: 2, borderRadius: '8px', color: '#fff' }}>
+                  <Typography sx={{ fontSize: '16px' }}>Get US $10 off with a new supplier</Typography>
                 </Box>
-
-                <Box sx={{
-                  bgcolor: isDark ? '#2f8c91' : '#55BDC3',
-                  p: 2,
-                  borderRadius: '8px',
-                  color: '#fff',
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center'
-                }}>
-                  <Typography sx={{ fontSize: '19px', width: "160px", textAlign: "left" }}>
-                    Send quotes with supplier preferences
-                  </Typography>
+                <Box sx={{ bgcolor: '#55BDC3', p: 2, borderRadius: '8px', color: '#fff' }}>
+                  <Typography sx={{ fontSize: '16px' }}>Send quotes with supplier preferences</Typography>
                 </Box>
-
               </Stack>
             </Box>
+
           </Box>
         </Paper>
       </Container>

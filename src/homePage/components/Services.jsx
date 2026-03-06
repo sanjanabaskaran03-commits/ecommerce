@@ -6,28 +6,32 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import SendIcon from '@mui/icons-material/Send';
 import SecurityIcon from '@mui/icons-material/Security';
 import LayoutContainer from '../../components/common/LayoutContainer';
+import Service1 from '/images/homepage/services/service1.png';
+import Service2 from '/images/homepage/services/service2.png';
+import Service3 from '/images/homepage/services/service3.png';
+import Service4 from '/images/homepage/services/service4.png';
 
 const MotionPaper = motion(Paper);
 
 const services = [
   {
     title: 'Source from Industry Hubs',
-    img: '/images/homepage/services/service1.png',
+    img: Service1,
     icon: <SearchIcon />,
   },
   {
     title: 'Customize Your Products',
-    img: '/images/homepage/services/service2.png',
+    img: Service2,
     icon: <InventoryIcon />,
   },
   {
     title: 'Fast, reliable shipping by ocean or air',
-    img: '/images/homepage/services/service3.png',
+    img: Service3,
     icon: <SendIcon />,
   },
   {
     title: 'Product monitoring and inspection',
-    img: '/images/homepage/services/service4.png',
+    img: Service4,
     icon: <SecurityIcon />,
   },
 ];
@@ -49,8 +53,6 @@ const Services = () => {
         >
           Our extra services
         </Typography>
-
-        {/* SINGLE LINE FLEX CONTAINER */}
         <Box 
           sx={{ 
             display: 'flex', 
@@ -65,7 +67,7 @@ const Services = () => {
               variant="outlined"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -8 }}
               sx={{
@@ -81,7 +83,6 @@ const Services = () => {
                 },
               }}
             >
-              {/* Image Section */}
               <Box sx={{ position: 'relative', height: '180px' }}> 
                 <Box
                   component="img"
@@ -104,7 +105,6 @@ const Services = () => {
                   }}
                 />
                 
-                {/* Floating Icon */}
                 <Box
                   sx={{
                     position: 'absolute',
@@ -127,7 +127,6 @@ const Services = () => {
                 </Box>
               </Box>
 
-              {/* Text Content */}
               <Box sx={{ p: 3, pt: 2 }}>
                 <Typography
                   variant="body1"
