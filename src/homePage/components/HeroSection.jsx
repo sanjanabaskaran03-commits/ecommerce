@@ -7,9 +7,9 @@ import {
 import { Person } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import Banner from "/images/homepage/herosection/Banner.png"
-import Banner1 from "images/homepage/herosection/Banner1.webp"
-import Banner2 from "images/homepage/herosection/Banner2.avif"
-import Banner5 from "images/homepage/herosection/Banner5.webp"
+import Banner1 from "/images/homepage/herosection/Banner1.webp"
+import Banner2 from "/images/homepage/herosection/Banner2.avif"
+import Banner5 from "/images/homepage/herosection/Banner5.webp"
 
 const HeroSection = () => {
   const theme = useTheme();
